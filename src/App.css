@@ -73,14 +73,9 @@ footer {
   background: #86989B;
 }
 
-.footer__wrapper{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  flex-direction: row;
-  justify-content:space-between;
-  max-height: 30px;
-  }
+/*
+Home styles start
+*/
 
 .intro__title{
   max-width: 700px;
@@ -183,6 +178,19 @@ footer {
   align-self: center;
 }
 
+/*
+Footer styles start
+ */
+
+.footer__wrapper{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  flex-direction: row;
+  justify-content:space-between;
+  max-height: 30px;
+}
+
 .footer__social{
   display: flex;
   flex-wrap: wrap;
@@ -220,7 +228,7 @@ footer {
 }
 /*
     Multicoloured Hover Variations
-*/
+ */
 
 #lab_social_icon_footer #social-fb:hover {
   color: #3B5998;
@@ -236,4 +244,35 @@ footer {
 
 #lab_social_icon_footer #social-em:hover {
   color: #f39c12;
+}
+
+/*
+Shop styles start
+ */
+
+.shop__items {
+  padding: 20px 40px 40px;
+  margin: 30px 100px 120px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+}
+
+.shop__item {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 60px 100px 40px;
+  width: 300px;
+  max-width: 500px;
+  background: floralwhite;
+  border: 3px solid rosybrown;
+  border-radius: 10px;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
