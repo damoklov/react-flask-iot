@@ -9,13 +9,13 @@ function Footer() {
                 rel="stylesheet"/>
                 <div className="container">
                     <div className="text-center center-block">
-                        <a href="https://www.facebook.com/bootsnipp"><i
+                        <a href="https://www.facebook.com/"><i
     id="social-fb"
     className="fa fa-facebook-square fa-3x social"/></a>
-                        <a href="https://twitter.com/bootsnipp"><i
+                        <a href="https://twitter.com/"><i
     id="social-tw"
     className="fa fa-twitter-square fa-3x social"/></a>
-                        <a href="https://plus.google.com/+Bootsnipp-page"><i
+                        <a href="https://google.com/"><i
     id="social-gp"
     className="fa fa-google-plus-square fa-3x social"/></a>
                         <a href="mailto:#"><i id="social-em"
