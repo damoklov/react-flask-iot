@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, abort, render_template
+from flask import Flask, request, jsonify, abort
 from flask_cors import cross_origin
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
@@ -37,16 +37,43 @@ class SmartHomeAppliance(HomeAppliance, db.Model):
     _plugged_into_socket = db.Column(db.Boolean, unique=False)
     _connection_protocol = db.Column(db.String(32), unique=False)
     _data_transfer_amount = db.Column(db.Float, unique=False)
+    _pic = db.Column(db.String(256), unique=False)
 
     def __init__(self, power_consumption=0, hours_per_month_usage=0.0,
                  repair_price=0.0, location_in_house='N/A',
                  appliance_name='N/A', plugged_into_socket=False,
-                 connection_protocol='telnet', data_transfer_amount=0.0):
+                 connection_protocol='telnet', data_transfer_amount=0.0,
+                 pic="N/A"):
         super().__init__(power_consumption, hours_per_month_usage,
                          repair_price, location_in_house,
                          appliance_name, plugged_into_socket)
         self._connection_protocol = str(connection_protocol)
         self._data_transfer_amount = float(data_transfer_amount)
+        self._pic = str(pic)
+
+    @property
+    def connection_protocol(self):
+        return self._connection_protocol
+
+    @connection_protocol.setter
+    def connection_protocol(self, connection_protocol):
+        self._connection_protocol = connection_protocol
+
+    @property
+    def data_transfer_amount(self):
+        return self._data_transfer_amount
+
+    @data_transfer_amount.setter
+    def data_transfer_amount(self, data_transfer_amount):
+        self._data_transfer_amount = data_transfer_amount
+
+    @property
+    def pic(self):
+        return self._pic
+
+    @pic.setter
+    def pic(self, pic):
+        self._pic = pic
 
 
 class SmartHomeApplianceSchema(ma.Schema):
@@ -54,7 +81,7 @@ class SmartHomeApplianceSchema(ma.Schema):
         fields = ('id', '_power_consumption', '_hours_per_month_usage',
                   '_repair_price', '_location_in_house', '_appliance_name',
                   '_plugged_into_socket', '_connection_protocol',
-                  '_data_transfer_amount')
+                  '_data_transfer_amount', '_pic')
 
 
 smart_home_appliance_schema = SmartHomeApplianceSchema()
@@ -80,7 +107,8 @@ def add_smart_home_appliance():
             request_form['appliance_name'],
             request_form['plugged_into_socket'],
             request_form['connection_protocol'],
-            request_form['data_transfer_amount'])
+            request_form['data_transfer_amount'],
+            request_form['pic'])
     except (KeyError, TypeError):
         abort(404)
         return
@@ -100,7 +128,7 @@ def get_smart_home_appliance():
 @app.route("/smart_home_appliance/search/<search>", methods=["GET"])
 @cross_origin()
 def smart_home_appliance_search(search):
-    smart_home_appliance = SmartHomeAppliance.query.filter(SmartHomeAppliance._appliance_name==search)
+    smart_home_appliance = SmartHomeAppliance.query.filter(SmartHomeAppliance._appliance_name == search)
     if not smart_home_appliance:
         return jsonify({})
     result = smart_home_appliances_schema.dump(smart_home_appliance)
@@ -139,6 +167,7 @@ def smart_home_appliance_update(id):
         smart_home_appliance.plugged_into_socket = bool(int(request_form['plugged_into_socket']))
         smart_home_appliance.connection_protocol = str(request_form['connection_protocol'])
         smart_home_appliance.data_transfer_amount = float(request_form['data_transfer_amount'])
+        smart_home_appliance.pic = str(request_form['pic'])
         db.session.commit()
     except (KeyError, TypeError):
         abort(404)
