@@ -4,16 +4,8 @@ import {Link} from 'react-router-dom';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
-import { makeStyles } from '@material-ui/core/styles';
 import axios from "axios";
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  },
-}));
+import useStyles from './Constants';
 
 function Shop() {
     const [loading, setLoading] = useState(true);
@@ -49,8 +41,8 @@ function Shop() {
   }, [search, data, query]);
 
     return (
-        <Fragment>
-            {loading ? (
+    <Fragment>
+        {loading ? (
             <div className="Shop">
                  <div className="loader">Loading...</div>
              </div>
@@ -67,7 +59,7 @@ function Shop() {
             onChange={(e) => setData(e.target.value)}
           />
           <button type="button" onClick={() => setSearch(true)}>
-        Search
+              Search
           </button>
         <div className="shop__items">
         {filteredItems.map(item => (
@@ -90,7 +82,8 @@ function Shop() {
         </div>
         </div>
     )}
-        </Fragment> );
+    </Fragment>
+    );
 }
 
 export default Shop;
