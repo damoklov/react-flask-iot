@@ -120,18 +120,28 @@ def add_smart_home_appliance():
 @app.route("/smart_home_appliance", methods=["GET"])
 @cross_origin()
 def get_smart_home_appliance():
+    import time
+    time.sleep(1.5)
+    protocol = request.args.get('protocol')
     all_smart_home_appliance = SmartHomeAppliance.query.all()
     result = smart_home_appliances_schema.dump(all_smart_home_appliance)
+    if protocol is not None:
+        result = [item for item in result if item["_connection_protocol"] == protocol]
     return jsonify({'smart_home_appliances': result})
 
 
 @app.route("/smart_home_appliance/search/<search>", methods=["GET"])
 @cross_origin()
 def smart_home_appliance_search(search):
+    import time
+    time.sleep(1.5)
+    protocol = request.args.get('protocol')
     smart_home_appliance = SmartHomeAppliance.query.filter(SmartHomeAppliance._appliance_name == search)
     if not smart_home_appliance:
         return jsonify({})
     result = smart_home_appliances_schema.dump(smart_home_appliance)
+    if protocol is not None:
+        result = [item for item in result if item["_connection_protocol"] == protocol]
     return jsonify({'smart_home_appliances': result})
 
 
