@@ -1,7 +1,14 @@
 import './App.css';
 import React, {useState, useEffect} from 'react'
+import {Link} from "react-router-dom";
+import IconButton from "@material-ui/core/IconButton";
+import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+import useStyles from './Constants';
+
 
 function Item(match) {
+    const classes = useStyles();
+
     useEffect(() => {
             fetchItem();
         }, []);
@@ -15,7 +22,20 @@ function Item(match) {
 
     return (
         <div className="Shop">
-            <h1>{item._appliance_name}</h1>
+        <div className="shop__items">
+            <div className="shop__item">
+            <h1 key={item.id}>
+                <Link to={`/shop/${item.id}`}>{item._appliance_name}</Link>
+            </h1>
+            <img src={item._pic} alt={"Pic"} width={"200px"} height={"200px"} className={"center"}/>
+                <div className={classes.root}>
+                    <h2>${item._repair_price}</h2>
+                    <IconButton color="primary" aria-label="add to shopping cart">
+                        <AddShoppingCartIcon />
+                    </IconButton>
+                </div>
+            </div>
+        </div>
         </div>
     )
 }
