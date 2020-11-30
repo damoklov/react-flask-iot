@@ -4,6 +4,7 @@ import {Link} from "react-router-dom";
 import IconButton from "@material-ui/core/IconButton";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import useStyles from './Constants';
+import axios from "axios";
 
 
 function Item(match) {
@@ -15,8 +16,8 @@ function Item(match) {
 
     const [item, setItem] = useState({});
     const fetchItem = async () => {
-        const fetchItem = await fetch(`http://127.0.0.1:5000/smart_home_appliance/${match.match.params.id}`);
-        const item = await fetchItem.json();
+        const fetchItem = await axios(`http://127.0.0.1:5000/smart_home_appliance/${match.match.params.id}`);
+        const item = await fetchItem.data;
         setItem(item);
     };
 
