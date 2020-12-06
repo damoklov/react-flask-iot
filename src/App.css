@@ -250,7 +250,7 @@ Shop styles start
 
 .shop__items {
   padding: 20px 40px 40px;
-  margin: 30px 100px 120px;
+  margin: 30px 40px 40px;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
