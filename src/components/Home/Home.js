@@ -1,7 +1,6 @@
-import './App.css';
+import '../../App.css';
 import React, {Component} from 'react';
 import features from "./Features";
-
 
 class Home extends Component {
   constructor() {
@@ -9,6 +8,7 @@ class Home extends Component {
       this.state = features;
       this.showMore = this.showMore.bind(this);
   }
+
   showMore() {
     this.state.itemsToShow === 3 ? (
       this.setState({ itemsToShow: this.state.items.length, expanded: true })

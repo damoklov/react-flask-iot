@@ -6,13 +6,7 @@ export function mapStateToProps(state) {
 
 export function mapDispatchToProps(dispatch) {
     return {
-        removeFromCart: (index) => {
-            dispatch({
-                type: 'REMOVE_FROM_CART',
-                index
-            })
-        },
-        checkout: (items) => {
+        addToCart: (items) => {
             dispatch({
                 type: 'CHECKOUT',
                 items

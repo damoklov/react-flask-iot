@@ -1,5 +1,4 @@
 const reducer = (state, action) => {
-    console.log(action);
     if (state === undefined) {
         return {
             items: [],
@@ -18,7 +17,14 @@ const reducer = (state, action) => {
         case 'REMOVE_FROM_CART': {
             const cart = [...state.cart];
             cart.splice(action.index, 1);
-             return {
+            return {
+                ...state,
+                cart
+            }
+        }
+        case 'CHECKOUT': {
+            const cart = [...state.cart];
+            return {
                 ...state,
                 cart
             }

@@ -1,13 +1,13 @@
-import './App.css';
+import '../../App.css';
 import React, {Fragment, Component} from 'react'
 import {Link} from 'react-router-dom';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import axios from "axios";
-import useStyles from './Constants';
+import useStyles from '../../Constants';
 import { connect } from 'react-redux';
-import { mapStateToProps, mapDispatchToProps} from "./components/actions/shopActions";
+import { mapStateToProps, mapDispatchToProps} from "../actions/shopActions";
 
 class Shop extends Component {
     constructor(props) {
@@ -44,7 +44,6 @@ class Shop extends Component {
             this.state.query = '';
             this.state.search = false;
             this.setState(this.state);
-            console.log(this.state);
         }
     };
 
@@ -69,7 +68,6 @@ class Shop extends Component {
             this.state.query = '';
             this.state.search = false;
             this.setState(this.state);
-            console.log(this.state);
         }
     }
 
