@@ -302,7 +302,25 @@ input[type=text] {
   border:0;
   margin:10px 10px;
   height: 40px;
-  width: 300px;
+  width: 380px;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+input[type=email] {
+  padding:10px;
+  border:0;
+  margin:10px 10px;
+  height: 40px;
+  width: 380px;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+input[type=password] {
+  padding:10px;
+  border:0;
+  margin:10px 10px;
+  height: 40px;
+  width: 380px;
   box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 }
 
