@@ -1,6 +1,7 @@
 import '../../App.css';
 import React from 'react'
 import {Link} from 'react-router-dom';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 function Nav() {
     const navStyle = {
@@ -20,6 +21,11 @@ function Nav() {
                 </Link>
                 <Link to={"/cart"} style={navStyle}>
                     <li>Cart</li>
+                </Link>
+                <Link to={"/login"} style={navStyle}>
+                    <li>
+                        <AccountCircleIcon/>
+                    </li>
                 </Link>
             </ul>
         </nav>
